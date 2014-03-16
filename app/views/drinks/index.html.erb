@@ -1,11 +1,9 @@
-
-
-
+<h1>List of drinks:</h1>
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>size</th>
+      <th><u> Drink name</u></th>
+      <th><u>Size<small>(in Litres)</small></u></th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,7 +17,7 @@
         <td><%= f.size %></td>
         <td><%= link_to 'Show', f %></td>
         <td><%= link_to 'Edit', edit_drink_path(f) %></td>
-        <td><%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Do You really want to delete this entry?' } %></td>
       </tr>
     <% end %>
   </tbody>

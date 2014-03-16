@@ -1,5 +1,5 @@
 class DrinksController < ApplicationController
-
+	before_action :set_drink, only: [:show, :edit, :update, :destroy]
 	def index
 		@drink = Drink.all
 	end
@@ -14,27 +14,30 @@ class DrinksController < ApplicationController
 	def create
 		@drink = Drink.new(drink_params)
 		
-		respond_to do |f|
      	 if @drink.save
-       	 f.html { redirect_to @drink, notice: 'Issue was successfully created.' }
+     	 	redirect_to drinks_path
      	 end
-     	end
-    end
-
-
-	
-
-	def drink_params
-  		params.require(:drink).permit(:name, :size) 
-
     end
 
 	def edit
 	end
 
 	def update
+		 if @drink.update_attributes(drink_params)
+     	 	redirect_to drinks_path
+     	 end
 	end
 
 	def destroy
+		if @drink.destroy
+			redirect_to drinks_path
+		end
 	end
+
+	def drink_params
+  		params.require(:drink).permit(:name, :size) 
+    end
+    def set_drink
+      @drink = Drink.find(params[:id])
+    end
 end
